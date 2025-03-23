@@ -11,7 +11,7 @@ import {
     InputLabel,
     Select,
     MenuItem,
-    FormHelperText
+    FormHelperText, Chip
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import PaymentsIcon from '@mui/icons-material/Payments';
@@ -323,8 +323,23 @@ const PaymentForm = () => {
                                                 <em>-- Pilih Rumah --</em>
                                             </MenuItem>
                                             {houses.map((house) => (
-                                                <MenuItem key={house.id} value={house.id}>
-                                                    {house.house_number}
+                                                <MenuItem
+                                                    key={house.id}
+                                                    value={house.id}
+                                                    style={{
+                                                        display: 'flex',
+                                                        justifyContent: 'space-between',
+                                                        alignItems: 'center'
+                                                    }}
+                                                >
+                                                    <span>{house.house_number}</span>
+                                                    <Chip
+                                                        size="small"
+                                                        label={house.payment_status === 'paid' ? "Lunas" : "Belum Lunas"}
+                                                        color={house.payment_status === 'paid' ? "success" : "error"}
+                                                        variant="outlined"
+                                                        style={{marginLeft: '8px'}}
+                                                    />
                                                 </MenuItem>
                                             ))}
                                         </Select>

@@ -296,7 +296,7 @@ const HouseDetail = () => {
   
   // Filter out residents that are already assigned to this house
   const availableResidents = allResidents.filter(
-    resident => !residents.some(r => r.id === resident.id)
+    resident => !residents.some(r => r.resident.id === resident.id)
   );
   
   return (
@@ -384,10 +384,6 @@ const HouseDetail = () => {
             <EmptyState 
               message="Tidak ada penghuni saat ini"
               secondaryMessage="Tambah penghuni di manajemen penghuni"
-              buttonText="Manajemen Penghuni"
-              buttonPath="#"
-              buttonIcon={<PersonAddIcon />}
-              buttonOnClick={() => setTabValue(3)}
             />
           ) : (
             <TableContainer>
@@ -584,7 +580,7 @@ const HouseDetail = () => {
                   
                   {availableResidents.length === 0 && (
                     <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1, textAlign: 'center' }}>
-                      No available residents to add
+                      Tidak ada penghuni yang tersedia untuk ditambahkan
                     </Typography>
                   )}
                 </Box>
